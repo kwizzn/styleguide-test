@@ -4,6 +4,7 @@ var path        = require('path');
 var Handlebars  = require('handlebars');
 var metalsmith  = require('metalsmith');
 var markDown    = require('metalsmith-markdown');
+var hbs         = require('../metalsmith-handlebars');
 var templates   = require('metalsmith-templates');
 var assets      = require('metalsmith-assets');
 var navigation  = require('metalsmith-navigation');
@@ -64,10 +65,13 @@ var relativePathHelper = function(current, target) {
 
 Handlebars.registerHelper('relative_path', relativePathHelper);
 
+var hbsTask = hbs({ Handlebars: Handlebars });
+
 var metalsmith = metalsmith(__dirname)
     .clean(true)
     .metadata(meta)
     .use(markDownTask)
+    .use(hbsTask)
     .use(navTask)
     .use(templatesTask)
     .use(assetsTask)
