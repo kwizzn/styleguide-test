@@ -3,39 +3,27 @@
 var path        = require('path');
 var Handlebars  = require('handlebars');
 var metalsmith  = require('metalsmith');
+var kss         = require('metalsmith-kss');
 var markDown    = require('metalsmith-markdown');
-var hbs         = require('../metalsmith-handlebars');
+var hbs         = require('metalsmith-handlebars');
+var navigation  = require('metalsmith-navigation');
 var templates   = require('metalsmith-templates');
 var assets      = require('metalsmith-assets');
-var navigation  = require('metalsmith-navigation');
 
 var navConfigs = {
     primary:{
         sortBy: 'nav_sort',
-        filterProperty: 'nav_groups',
+        filterProperty: 'nav_groups'
     },
     footer: {
         sortBy: 'nav_sort',
-        filterProperty: 'nav_groups',
+        filterProperty: 'nav_groups'
     }
 };
 
 var navSettings = {
-    navListProperty: 'navs',
+    navListProperty: 'navs'
 };
-
-var navTask = navigation(navConfigs, navSettings);
-
-var assetsTask = assets({
-    source: './assets',
-    destination: './assets'
-});
-
-var markDownTask = markDown();
-
-var templatesTask = templates({
-    engine: 'handlebars'
-});
 
 var meta = {
     title: 'Potec',
@@ -48,7 +36,7 @@ var meta = {
         nav_relative : '_nav_relative',
         nav_footer : '_nav_footer',
 
-        nav__children: '_nav__children',
+        nav__children: '_nav__children'
     }
 };
 
@@ -65,16 +53,15 @@ var relativePathHelper = function(current, target) {
 
 Handlebars.registerHelper('relative_path', relativePathHelper);
 
-var hbsTask = hbs({ Handlebars: Handlebars });
-
-var metalsmith = metalsmith(__dirname)
+metalsmith(__dirname)
     .clean(true)
     .metadata(meta)
-    .use(markDownTask)
-    .use(hbsTask)
-    .use(navTask)
-    .use(templatesTask)
-    .use(assetsTask)
+    .use(kss())
+    .use(markDown())
+    .use(hbs({ Handlebars: Handlebars }))
+    .use(navigation(navConfigs, navSettings))
+    .use(templates({ engine: 'handlebars' }))
+    .use(assets({ source: './assets', destination: './assets' }))
     .build(function(err) {
         if (err) throw err;
     });
