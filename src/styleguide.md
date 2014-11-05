@@ -1,10 +1,10 @@
 ---
-title: Services
+title: Styleguide
 template: page.html
-nav_sort: 4
+nav_sort: 2
 nav_groups:
   - primary
   - footer
 ---
 
-Metalcorp offers many services.
+Coming up soon...

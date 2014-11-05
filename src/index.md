@@ -7,4 +7,4 @@ nav_groups:
   - footer
 ---
 
-The Metalcorp homepage.
+Coming up soon...

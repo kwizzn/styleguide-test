@@ -1,5 +1,5 @@
 ---
-title: Contact
+title: Prototyp
 template: page.html
 nav_sort: 3
 nav_groups:
@@ -7,4 +7,4 @@ nav_groups:
   - footer
 ---
 
-There are many ways to contact Metalcorp.
+Coming up soon...

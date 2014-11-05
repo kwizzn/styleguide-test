@@ -1,8 +1,9 @@
 ---
-title: Sales
+title: CSS
 template: page.html
+nav_sort: 1
 nav_groups:
   - primary
 ---
 
-We offer limited sales services.
+Coming up soon...
