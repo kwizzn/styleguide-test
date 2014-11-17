@@ -56,7 +56,7 @@ Handlebars.registerHelper('relative_path', relativePathHelper);
 metalsmith(__dirname)
     .clean(true)
     .metadata(meta)
-    .use(kss({ source: 'less/', target: 'styleguide/', pageTemplate: 'page.html', template: './templates/kss.html' }))
+    .use(kss({ source: 'less/', target: 'styleguide/', pageTemplate: 'page.html' }))
     .use(markDown())
     .use(hbs({ Handlebars: Handlebars }))
     .use(navigation(navConfigs, navSettings))
