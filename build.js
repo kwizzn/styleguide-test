@@ -1,6 +1,7 @@
 'use strict';
 
 var path        = require('path');
+var glob        = require('glob');
 var Handlebars  = require('handlebars');
 var metalsmith  = require('metalsmith');
 var kss         = require('metalsmith-kss');
@@ -56,7 +57,7 @@ Handlebars.registerHelper('relative_path', relativePathHelper);
 metalsmith(__dirname)
     .clean(true)
     .metadata(meta)
-    .use(kss({ source: 'less/', target: 'styleguide/', pageTemplate: 'page.html' }))
+    .use(kss({ source: 'less/', target: 'styleguide/', pageTemplate: 'page.html', fixtures: glob.sync('less/**/*.hbs') }))
     .use(markDown())
     .use(hbs({ Handlebars: Handlebars }))
     .use(navigation(navConfigs, navSettings))
