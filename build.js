@@ -13,11 +13,11 @@ var assets      = require('metalsmith-assets');
 
 var navConfigs = {
     primary:{
-        sortBy: 'nav_sort',
+        sortBy: 'title',
         filterProperty: 'nav_groups'
     },
     footer: {
-        sortBy: 'nav_sort',
+        sortBy: 'title',
         filterProperty: 'nav_groups'
     }
 };
