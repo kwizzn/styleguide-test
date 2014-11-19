@@ -68,6 +68,9 @@ function getRelativePath(current, target) {
 }
 
 Handlebars.registerHelper('relative_path', getRelativePath);
+Handlebars.registerHelper('exists', function (value, fallback) {
+    return new Handlebars.SafeString(value || fallback);
+});
 
 metalsmith(__dirname)
     .clean(true)
